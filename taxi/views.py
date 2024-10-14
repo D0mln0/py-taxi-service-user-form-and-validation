@@ -4,9 +4,9 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import (
-        HttpRequest,
-        HttpResponse,
-        HttpResponseRedirect,
+    HttpRequest,
+    HttpResponse,
+    HttpResponseRedirect,
 )
 
 from .forms import (
@@ -78,7 +78,10 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
             car.drivers.remove(request.user)
         else:
             car.drivers.add(request.user)
-        return redirect(reverse_lazy("taxi:car-detail", kwargs={"pk": pk}))
+        return redirect(reverse_lazy(
+            "taxi:car-detail",
+            kwargs={"pk": pk})
+        )
 
 
 class CarCreateView(LoginRequiredMixin, generic.CreateView):

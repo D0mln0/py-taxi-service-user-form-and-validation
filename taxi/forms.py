@@ -44,8 +44,8 @@ class DriverForm(UserCreationForm):
 
         if len(license_number) != DriverLicenseUpdateForm.LICENSE_LEN:
             raise ValidationError(
-                f"Ensure that license is =="
-                f"{DriverLicenseUpdateForm.LICENSE_LEN} character long."
+                f"Ensure that license is "
+                f"== {DriverLicenseUpdateForm.LICENSE_LEN} character long."
             )
         elif (license_number[:3] != license_number[:3].upper()
               or any(char.isdigit() for char in license_number[:3])):
